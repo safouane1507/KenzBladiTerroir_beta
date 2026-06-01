@@ -1,0 +1,642 @@
+/* ============================================================
+  _variables.scss — CONTRAT UNIQUE
+  Version enrichie : border-radius, shadow, density, a11y
+  ============================================================ */
+
+:root {
+
+  /* ==========================================================
+    1) PRIMARY FALLBACK (emerald)
+    ========================================================== */
+  
+  --primary-color-text: #ffffff;
+  --primary-contrast-color: var(--primary-color-text);
+
+  --primary-50: #f7f7e6;
+  --primary-100: #eeeecc;
+  --primary-200: #dddd99;
+  --primary-300: #cccc66;
+  --primary-400: #999933;
+  --primary-500: #333305;
+  --primary-600: #2b2b04;
+  --primary-700: #242403;
+  --primary-800: #1c1c03;
+  --primary-900: #141402;
+  --primary-950: #0a0a01;
+
+  --primary-50-text: #000;
+  --primary-100-text: #000;
+  --primary-200-text: #000;
+  --primary-300-text: #000;
+  --primary-400-text: #000;
+  --primary-500-text: #fff;
+  --primary-600-text: #fff;
+  --primary-700-text: #fff;
+  --primary-800-text: #fff;
+  --primary-900-text: #fff;
+  --primary-950-text: #fff;
+
+  --primary-color: var(--primary-500);
+  --primary-color-text: var(--primary-500-text);
+  --primary-contrast-color: var(--primary-500-text);
+  --primary-hover-color: var(--primary-600);
+  --primary-transparent: rgba(20, 184, 166, .15);
+  --primary-active-color: var(--primary-700);
+
+  --highlight-bg: rgba(16, 185, 129, .12);
+  --highlight-text-color: var(--text-color);
+
+  --focus-ring-color: rgba(16, 185, 129, .25);
+  --focus-ring: 0 0 0 0.2rem var(--focus-ring-color);
+
+  /* ==========================================================
+    2) SURFACE FALLBACK (slate light)
+    ========================================================== */
+  --surface-0: #ffffff;
+  --surface-50: #f8fafc;
+  --surface-100: #f1f5f9;
+  --surface-200: #e2e8f0;
+  --surface-300: #cbd5e1;
+  --surface-400: #94a3b8;
+  --surface-500: #64748b;
+  --surface-600: #475569;
+  --surface-700: #334155;
+  --surface-800: #1e293b;
+  --surface-900: #0f172a;
+  --surface-950: #020617;
+
+  --surface-ground: var(--surface-50);
+  --surface-section: var(--surface-0);
+  --surface-card: var(--surface-0);
+  --surface-overlay: var(--surface-0);
+  --surface-border: var(--surface-200);
+  --surface-hover: var(--surface-100);
+
+  --text-white: var(--surface-0)
+  --text-color: var(--surface-900);
+  --text-secondary-color: var(--surface-600);
+  --text-color-secondary: var(--text-secondary-color);
+
+  --mask-bg: rgba(0, 0, 0, .4);
+  --overlay-mask: var(--mask-bg);
+  --overlay-white: rgba(255, 255, 255, .85);
+
+  /* ==========================================================
+    3) SECONDARY FALLBACK (teal)
+    ========================================================== */
+  --secondary-50: #f3effb;
+  --secondary-100: #e4dcf6;
+  --secondary-200: #c9b9ed;
+  --secondary-300: #ae96e4;
+  --secondary-400: #8b6fd6;
+  --secondary-500: #6c4ea7;
+  --secondary-600: #5f4494;
+  --secondary-700: #50397c;
+  --secondary-800: #402e63;
+  --secondary-900: #31244a;
+  --secondary-950: #1c132c;
+
+  --secondary-50-text: #000;
+  --secondary-100-text: #000;
+  --secondary-200-text: #000;
+  --secondary-300-text: #000;
+  --secondary-400-text: #000;
+  --secondary-500-text: #fff;
+  --secondary-600-text: #fff;
+  --secondary-700-text: #fff;
+  --secondary-800-text: #fff;
+  --secondary-900-text: #fff;
+  --secondary-950-text: #fff;
+
+  --secondary-color: var(--secondary-500); 
+  --secondary-color-text: var(--secondary-500-text);
+  --secondary-contrast-color: var(--secondary-500-text);
+  --secondary-hover-color: var(--secondary-600);
+  --secondary-active-color: var(--secondary-700);
+  --secondary-transparent: rgba(20, 184, 166, .15);
+  --secondary-color-hover: var(--secondary-hover-color);
+
+  /* ==========================================================
+    4) BORDER RADIUS
+    ── Valeurs par défaut = preset "rounded"
+    ── ThemeService écrase via applyBorderRadius()
+    ========================================================== */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+  /* Legacy alias */
+  --border-radius-sm: 4px;
+  --border-radius: 8px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-full: 50%;
+  --border-radius-pill: 1rem;
+
+  --btn-radius: var(--radius-md);
+  --overlay-radius: var(--radius-md);
+  --footer-radius: var(--radius-md);
+
+  /* ── Tokens pour les presets de rayon (lecture seule, doc) ──
+     sharp   : xs=2px   sm=4px    md=6px    lg=8px    xl=10px
+     rounded : default (valeurs ci-dessus)
+     pill    : tous = 999px
+  */
+
+  /* ==========================================================
+    5) SHADOWS
+    ── Valeurs par défaut = preset "normal"
+    ── ThemeService écrase via applyShadowIntensity()
+    ========================================================== */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, .06);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, .07);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, .10);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, .13), 0 10px 20px rgba(0, 0, 0, .08);
+
+  --card-shadow-default: 0 2px 8px rgba(0, 0, 0, .08);
+  --card-shadow-hover: 0 8px 20px rgba(0, 0, 0, .12);
+  --card-shadow-strong: 0 4px 12px rgba(0, 0, 0, .12);
+
+  --btn-shadow-default: 0 2px 8px rgba(0, 0, 0, .08);
+  --btn-shadow-hover: 0 4px 12px rgba(0, 0, 0, .12);
+
+  --overlay-shadow: var(--shadow-lg);
+
+  /* ── Tokens valeurs brutes par niveau (utiles en SCSS) ──────
+     none   : toutes les ombres = none
+     subtle : rgba alpha /2
+     normal : valeurs ci-dessus
+     strong : rgba alpha *1.5
+  */
+
+  /* ==========================================================
+    6) DENSITY
+    ── Valeurs par défaut = preset "normal"
+    ── ThemeService écrase via applyDensity()
+    ========================================================== */
+  /* spacing qui suit le scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 0.75rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.5rem;
+  --spacing-2xl: 2rem;
+
+  /* spacing fixe (ne suit pas le scale) */
+  --spacing-fixed-xs: 4px;
+  --spacing-fixed-sm: 8px;
+  --spacing-fixed-md: 12px;
+  --spacing-fixed-lg: 16px;
+  --spacing-fixed-xl: 24px;
+  --spacing-fixed-2xl: 32px;
+
+  --badge-padding-y-sm: 0.3rem;
+  --badge-padding-x-sm: 0.6rem;
+
+  --btn-height: 44px;
+  --btn-action-size: 44px;
+  --btn-action-size-md: 40px;
+  --btn-action-size-sm: 36px;
+  --btn-action-size-xs: 28px;
+
+  /* ── Tokens par preset (doc) ───────────────────────────────
+     compact     : spacing * .75, font-size-base = .80rem, btn-height = 36px
+     normal      : valeurs ci-dessus
+     comfortable : spacing * 1.25, font-size-base = 1rem,  btn-height = 52px
+  */
+
+  /* ==========================================================
+    7) TYPOGRAPHY
+    ========================================================== */
+  --font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Roboto Condensed", sans-serif;
+
+  --font-size-xs: 0.7rem;
+  --font-size-sm: 0.75rem;
+  --font-size-base: 0.9rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.3rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-none: 1;
+  --line-height-tighter: 0.85;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* ==========================================================
+    8) TRANSITIONS & ANIMATIONS
+    ── ThemeService écrase tout via applyReducedMotion()
+    ── quand reducedMotion = true → toutes = "0s none"
+    ========================================================== */
+  --transition-fast: all 0.15s ease;
+  --transition-default: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+  --transition-transform: transform 0.3s ease;
+  --transition-transform-fast: transform .15s ease;
+  --transition-colors: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  --transition-colors-fast: background-color .15s ease, color .15s ease, border-color .15s ease;
+  --transition-shadow: box-shadow 0.3s ease;
+  --transition-opacity: opacity 0.3s ease;
+
+  --hover-lift: translateY(-5px);
+  --hover-scale: scale(1.05);
+  --hover-scale-sm: scale(1.1);
+  --hover-scale-btn: scale(1.02);
+
+  --opacity-disabled: 0.6;
+  --opacity-muted: 0.7;
+  --opacity-hover: 0.9;
+
+  /* ==========================================================
+    9) BORDERS
+    ── ThemeService écrase via applyHighContrast()
+    ── highContrast = true → border-width-thin=2px, base=3px
+    ========================================================== */
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --border-width-md: 3px;
+  --border-width-thick: 4px;
+
+  /* ==========================================================
+    10) STATUS COLORS
+    ========================================================== */
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+
+  --color-star: #ffc107;
+  --color-verified: #1da1f2;
+
+  --color-info-light: rgba(13, 110, 253, .15);
+  --color-danger-light: rgba(220, 53, 69, .15);
+  --color-danger-dark: #a61e2b;
+  --color-success-light: rgba(40, 167, 69, .15);
+  --color-success-dark: #166534;
+
+  /* ==========================================================
+    11) Z-INDEX
+    ========================================================== */
+  --z-index-null: 0;
+  --z-index-base: 1;
+  --z-index-2: calc(var(--z-index-base) + 1);
+  --z-index-3: 3;
+  --z-index-10: 10;
+  --z-index-50: 50;
+  --z-index-100: 100;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  /* ==========================================================
+    12) SIZING (cards / icons / buttons / misc)
+    ========================================================== */
+  --card-header-height: 200px;
+  --card-header-height-md: 180px;
+  --card-header-height-sm: 160px;
+
+  --card-header-height-product: 220px;
+  --card-header-height-product-sm: 180px;
+  --card-header-height-product-xs: 140px;
+
+  --card-min-height-horizontal-xsm: 120px;
+  --card-min-height-horizontal-md: 220px;
+
+  --logo-size: 80px;
+  --logo-size-md: 70px;
+  --logo-size-sm: 60px;
+
+  --icon-size-sm: 1rem;
+  --icon-size-base: 1.1rem;
+  --icon-size-md: 1.2rem;
+  --icon-size-lg: 1.5rem;
+  --icon-size-xl: 2rem;
+  --icon-size-xxl: 2.5rem;
+
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+
+  /* ==========================================================
+    13) BUTTON semantic tokens (vus dans _components.scss)
+    ========================================================== */
+  --btn-font-weight: var(--font-weight-semibold);
+
+  --btn-primary-bg: var(--primary-color);
+  --btn-primary-fg: var(--primary-color-text);
+  --btn-primary-border: var(--primary-color);
+  --btn-primary-hover-bg: var(--primary-hover-color);
+  --btn-primary-hover-fg: var(--primary-color-text);
+  --btn-primary-active-bg: var(--primary-active-color);
+
+  --btn-secondary-bg: var(--secondary-color);
+  --btn-secondary-fg: var(--secondary-color-text);
+  --btn-secondary-border: var(--secondary-color);
+  --btn-secondary-hover-bg: var(--secondary-hover-color);
+  --btn-secondary-hover-fg: var(--secondary-color-text);
+  --btn-secondary-active-bg: var(--secondary-active-color);
+
+  --btn-secondary-outline-bg: transparent;
+  --btn-secondary-outline-fg: var(--secondary-color);
+  --btn-secondary-outline-border: var(--secondary-color);
+  --btn-secondary-outline-hover-bg: var(--secondary-transparent);
+
+  --btn-surface-bg: var(--surface-0);
+  --btn-surface-fg: var(--text-color);
+  --btn-surface-border: var(--surface-border);
+  --btn-surface-hover-bg: var(--surface-hover);
+  --btn-surface-active-bg: var(--surface-200);
+
+  --color-btn: var(--primary-color);
+  --color-hover: var(--primary-hover-color);
+  --color-btn-action-bg: var(--surface-0);
+  --color-btn-action-hover: var(--primary-color);
+
+  /* ==========================================================
+    14) LAYOUT TOKENS (header / menu / footer / overlay)
+    ========================================================== */
+  /* ----------------------------------------------------------
+    HEADER & FOOTER (même identité “brand”)
+    - Fond : suit la palette primaire
+    - Texte : teintes claires de la même palette (évite le blanc hardcodé)
+    - Band : petit liseré de séparation
+    ---------------------------------------------------------- */
+  --header-bg: var(--primary-700);
+  --header-fg: var(--primary-50);
+  --header-muted: var(--primary-200);
+  --header-border: var(--primary-800);
+  --header-link: var(--primary-100);
+  --header-link-hover: var(--primary-50);
+  --header-band: var(--primary-600);
+  --header-band-height: 3px;
+
+  --footer-bg: var(--primary-900);
+  --footer-fg: var(--primary-50);
+  --footer-muted: var(--primary-50);
+  --footer-border: var(--primary-800);
+  --footer-link: var(--primary-100);
+  --footer-link-hover: var(--primary-50);
+  --footer-divider: rgba(255, 255, 255, .15);
+  --footer-band: var(--primary-600);
+  --footer-band-height: 3px;
+  --footer-padding-y: var(--spacing-md);
+  --footer-padding-x: var(--spacing-lg);
+  --footer-link-opacity: 0.92;
+  --footer-link-hover-opacity: 1;
+
+  /* ---- NAV (barre menu) ---- */
+  /* Le menu est l'inverse du header/footer : surface neutre + accent primary. */
+  --nav-bg: var(--surface-card);
+  --nav-fg: var(--text-color);
+  --nav-border: var(--surface-border);
+  --nav-shadow: var(--shadow-sm);
+  --nav-band: var(--primary-500);
+  --nav-band-height: 3px;
+  --nav-hover-bg: var(--surface-hover);
+  --nav-active-bg: var(--highlight-bg);
+  --nav-active-fg: var(--primary-color);
+
+  /* ---- OVERLAY (mega menu, overlayPanel, theme-configurator) ---- */
+  --overlay-bg: var(--surface-overlay);
+  --overlay-fg: var(--text-color);
+  --overlay-border: var(--surface-border);
+  /* Inner layer (cards / sections inside overlays) */
+  --overlay-inner-bg: var(--surface-card);
+  --overlay-inner-border: var(--surface-border);
+
+  /* Topbar aliases */
+  --topbar-bg: var(--header-bg);
+  --topbar-fg: var(--header-fg);
+  --topbar-border: var(--header-border);
+  --topbar-muted: var(--header-muted);
+  --topbar-link: var(--header-link);
+  --topbar-link-hover: var(--header-link-hover);
+  --topbar-icon-size: var(--icon-size-md);
+  --topbar-action-size: var(--btn-action-size);
+  --topbar-action-radius: var(--radius-sm);
+  --topbar-action-hover-bg: var(--primary-800);
+  --topbar-action-hover-border: var(--primary-700);
+  --topbar-action-active-bg: var(--primary-700);
+  --topbar-menu-bg: var(--overlay-bg);
+  --topbar-menu-fg: var(--overlay-fg);
+  --topbar-menu-border: var(--overlay-border);
+  --topbar-badge-bg: var(--primary-color);
+  --topbar-badge-fg: var(--primary-color-text);
+  --topbar-badge-border: transparent;
+
+  /* Menu */
+  --menu-bar-bg: var(--nav-bg);
+  --menu-bar-fg: var(--nav-fg);
+  --menu-bar-border: var(--nav-border);
+  --menu-bar-shadow: var(--shadow-md);
+  --menu-bar-band: var(--nav-band);
+  --menu-bar-band-height: var(--nav-band-height);
+
+  --menu-panel-bg: var(--overlay-bg);
+  --menu-panel-border: var(--overlay-border);
+  --menu-panel-shadow: var(--overlay-shadow);
+  --menu-panel-accent: var(--primary-color);
+
+  --menu-link-fg: var(--primary-color);
+  --menu-link-hover-fg: var(--primary-color);
+  --menu-link-hover-bg: var(--highlight-bg);
+  --menu-link-active-bg: var(--highlight-bg);
+  --menu-link-active-fg: var(--primary-color);
+
+  /* Brand surfaces (colonne gauche mega menu) → suit header/footer */
+  --menu-col-left-bg: var(--header-bg);
+  --menu-col-left-fg: var(--header-fg);
+  --menu-col-left-hover: var(--primary-800);
+  --menu-col-left-border: rgba(255, 255, 255, .14);
+
+  /* CTA "Voir tout" dans mega menu (doit ressortir) */
+  --menu-cta-bg: var(--primary-800);
+  --menu-cta-fg: var(--primary-50);
+  --menu-cta-border: var(--primary-400);
+  --menu-cta-hover-bg: var(--primary-900);
+
+  /* Colonne centrale : tint de la palette primaire (comme sur la maquette) */
+  --menu-col-mid-bg: var(--primary-50);
+  --menu-col-mid-fg: var(--primary-50-text);
+  --menu-col-mid-hover: var(--primary-100);
+  --menu-col-mid-border: var(--primary-100);
+
+  --menu-content-bg: linear-gradient(to bottom, var(--surface-50) 0%, var(--surface-0) 100%);
+
+  /* ==========================================================
+    14-B) FILTER PANEL TOKENS
+    ========================================================== */
+  --filter-bg: var(--surface-card);
+  --filter-border: var(--surface-border);
+  --filter-border-radius: var(--radius-md);
+  --filter-shadow: var(--shadow-md);
+  --filter-padding: var(--spacing-xl);
+  --filter-gap: var(--spacing-md);
+
+  --filter-header-fg: var(--text-color);
+  --filter-header-font-size: var(--font-size-md);
+  --filter-header-font-weight: var(--font-weight-semibold);
+  --filter-header-icon-color: var(--primary-color);
+  --filter-header-icon-size: var(--icon-size-md);
+  --filter-header-border: var(--surface-border);
+
+  --filter-input-bg: var(--surface-ground);
+  --filter-input-border: var(--surface-border);
+  --filter-input-border-radius: var(--radius-sm);
+  --filter-input-height: 2.75rem;
+  --filter-input-padding-x: var(--spacing-md);
+  --filter-input-fg: var(--text-color);
+  --filter-input-placeholder-fg: var(--text-secondary-color);
+  --filter-input-focus-border: var(--primary-color);
+  --filter-input-focus-shadow: 0 0 0 3px var(--primary-transparent);
+
+  --filter-label-fg: var(--text-secondary-color);
+  --filter-label-font-size: var(--font-size-sm);
+  --filter-label-font-weight: var(--font-weight-medium);
+
+  --filter-section-title-fg: var(--text-color);
+  --filter-section-title-font-size: var(--font-size-base);
+  --filter-section-title-font-weight: var(--font-weight-semibold);
+
+  --filter-divider: var(--surface-border);
+
+  --filter-control-check-size: 1rem;
+  --filter-control-check-border: var(--surface-400);
+  --filter-control-check-checked-bg: var(--primary-color);
+  --filter-control-check-checked-border: var(--primary-color);
+
+  --filter-slider-track-bg: var(--surface-200);
+  --filter-slider-range-bg: var(--primary-color);
+  --filter-slider-handle-bg: var(--surface-0);
+  --filter-slider-handle-border: var(--primary-color);
+
+  --filter-transition: var(--transition-default);
+
+  /* ==========================================================
+    15) RENDER
+    ========================================================== */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+  DARK MODE
+  ============================================================ */
+html.app-dark {
+  // --primary-color : var(--primary-100) !important;
+  // --primary-color-text : var(--primary-100-text) !important;
+  /* Mega menu / overlay cards: inner layer un peu plus sombre */
+  --overlay-inner-bg: var(--surface-900);
+  --menu-link-fg: var(--text-color);
+
+  /* Menu columns: éviter les gris "clairs" (surface-50/0) en dark */
+  --menu-col-mid-bg: var(--surface-800);
+  --menu-content-bg: linear-gradient(to bottom, var(--surface-800) 0%, var(--surface-900) 100%);
+
+  /* Header/Footer restent "brand" en dark : on renforce le fond */
+  --header-bg: var(--primary-950);
+  --footer-bg: var(--primary-950);
+  --overlay-white: rgba(15, 23, 42, .85);
+}
+
+/* ============================================================
+  HIGH CONTRAST MODE
+  ThemeService applique les vars inline,
+  ces règles ajoutent des renforts CSS pur.
+  ============================================================ */
+html.app-high-contrast {
+  /* Force tous les textes à plein contraste */
+  --text-color: #000000;
+  --text-secondary-color: #1f2937;
+
+  /* Borders plus visibles */
+  --surface-border: #000000;
+  --border-width-thin: 2px;
+  --border-width-base: 3px;
+
+  /* Focus ring renforcé */
+  --focus-ring: 0 0 0 3px #000000;
+}
+
+html.app-dark.app-high-contrast {
+  --text-color: #ffffff;
+  --text-secondary-color: #e5e7eb;
+  --surface-border: #ffffff;
+  --focus-ring: 0 0 0 3px #ffffff;
+}
+
+/* ============================================================
+  REDUCED MOTION
+  Double sécurité CSS natif + tokens ThemeService
+  ============================================================ */
+html.app-reduced-motion *,
+html.app-reduced-motion *::before,
+html.app-reduced-motion *::after {
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* Respect du préférence système (indépendant du toggle) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0s none;
+    --transition-default: 0s none;
+    --transition-slow: 0s none;
+    --transition-transform: 0s none;
+    --transition-transform-fast: 0s none;
+    --transition-colors: 0s none;
+    --transition-colors-fast: 0s none;
+    --transition-shadow: 0s none;
+    --transition-opacity: 0s none;
+  }
+}
+
+/* ============================================================
+  DENSITY DATA-ATTRIBUTE HOOKS
+  Optionnel : surcharges CSS pures si les composants ciblent
+  l'attribut data-density sur <html>.
+  ============================================================ */
+html[data-density='compact'] {
+  --badge-padding-y-sm: 0.2rem;
+  --badge-padding-x-sm: 0.45rem;
+}
+
+html[data-density='comfortable'] {
+  --badge-padding-y-sm: 0.4rem;
+  --badge-padding-x-sm: 0.75rem;
+}
+
+/* ============================================================
+  BORDER-RADIUS DATA-ATTRIBUTE HOOKS
+  ============================================================ */
+html[data-radius='sharp'] {
+  --border-radius-pill: 8px;
+}
+
+html[data-radius='pill'] {
+  --border-radius-pill: 999px;
+  --btn-radius: 999px;
+}
+
+/* ============================================================
+  UTILITIES
+  ============================================================ */
+.h-200 {
+  height: 200px;
+}

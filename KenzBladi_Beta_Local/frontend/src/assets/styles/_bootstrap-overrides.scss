@@ -1,0 +1,53 @@
+:root {
+  --bs-primary: var(--primary-color);
+  --bs-primary-bg-subtle: var(--highlight-bg);
+  --bs-body-bg: var(--surface-ground);
+  --bs-body-color: var(--text-color);
+  --bs-secondary-color: var(--text-secondary-color);
+  --bs-emphasis-color: var(--text-color);
+  --bs-border-color: var(--surface-border);
+  --bs-link-color: var(--primary-color);
+  --bs-link-hover-color: var(--primary-hover-color);
+  --bs-card-bg: var(--surface-card);
+  --bs-border-radius: var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-md);
+  --bs-border-radius-xl: var(--radius-lg);
+  --link-color: var(--text-color-secondary);
+}
+
+button:focus, .btn:focus, a:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+a { color: var(--link-color); }
+
+.dropdown-menu { z-index: 1200; }
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color-text) !important;
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover-color) !important;
+  border-color: var(--primary-hover-color) !important;
+}
+.btn-primary:active {
+  background-color: var(--primary-active-color) !important;
+}
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--focus-ring-color) !important;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary-color) !important;
+  color: var(--primary-color-text) !important;
+}
+
+.table { --bs-table-bg: var(--surface-card); }
+.table > :not(caption) > * > * { background-color: var(--surface-card); }

@@ -1,0 +1,68 @@
+<!-- Hero -->
+<div style="background: linear-gradient(135deg, var(--primary-900), var(--primary-700)); padding: 4rem 0; color: #fff;">
+  <div class="app-container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <p style="color:var(--primary-200); font-size:.82rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:.75rem;">Notre Histoire</p>
+        <h1 style="font-size:clamp(2rem,4vw,3rem); color:#fff; font-weight:800; margin-bottom:1rem; line-height:1.15;">
+          Kenz Bladi —<br>Les Trésors de Mon Pays
+        </h1>
+        <p style="color:rgba(255,255,255,.85); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem;">
+          Kenz Bladi est une marketplace marocaine fondée pour valoriser et promouvoir les produits du terroir authentiques. Nous connectons artisans, coopératives agricoles et petits producteurs locaux avec les consommateurs au Maroc et à l'international.
+        </p>
+        <a routerLink="/catalogue" class="btn-app btn-app--primary btn-app--lg">
+          <i class="pi pi-shopping-bag"></i> Découvrir nos produits
+        </a>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img [src]="imagesUrl + '/about-image.jpg'" alt="Kenz Bladi — Produits du terroir marocain"
+          style="max-width:100%; max-height:380px; object-fit:cover; border-radius:var(--radius-xl); box-shadow:var(--shadow-lg);"
+          (error)="$any($event.target).src=imagesUrl+'/bg1.jpg'">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mission -->
+<section class="app-container" style="padding-top:3.5rem; padding-bottom:2rem; max-width:900px;">
+  <h2 class="section-title text-center mx-auto" style="text-align:center;">
+    Notre Mission
+  </h2>
+  <p style="color:var(--text-secondary-color); font-size:1.05rem; line-height:1.8; text-align:center; margin-top:1.25rem;">
+    Préserver le patrimoine culturel et gastronomique marocain tout en soutenant l'économie locale. Chaque achat sur Kenz Bladi est un geste de solidarité avec les producteurs et artisans marocains qui perpétuent des savoir-faire ancestraux.
+  </p>
+</section>
+
+<!-- Values -->
+<section class="app-container" style="padding-bottom:3rem;">
+  <h2 class="section-title mb-4">Nos Valeurs</h2>
+  <div class="row g-3">
+    <div class="col-md-6 col-lg-3" *ngFor="let v of values">
+      <div style="background:var(--surface-card); border-radius:var(--radius-lg); padding:1.75rem 1.25rem; box-shadow:var(--card-shadow-default); height:100%; text-align:center; transition:var(--transition-default);"
+           onmouseenter="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--card-shadow-hover)'"
+           onmouseleave="this.style.transform=''; this.style.boxShadow='var(--card-shadow-default)'">
+        <i [class]="v.icon" style="font-size:2.25rem; color:var(--primary-color); display:block; margin-bottom:1rem;"></i>
+        <h5 style="color:var(--text-color); font-weight:700; margin-bottom:.5rem;">{{ v.title }}</h5>
+        <p style="color:var(--text-secondary-color); font-size:.875rem; line-height:1.6; margin:0;">{{ v.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--surface-100); padding:3rem 0; border-top:1px solid var(--surface-border);">
+  <div class="app-container text-center">
+    <h3 style="color:var(--text-color); margin-bottom:.75rem;">Prêt à découvrir les trésors du Maroc ?</h3>
+    <p style="color:var(--text-secondary-color); margin-bottom:1.5rem;">
+      Parcourez notre catalogue et trouvez des produits authentiques issus directement des régions marocaines.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a routerLink="/catalogue" class="btn-app btn-app--primary btn-app--lg">
+        <i class="pi pi-shopping-bag"></i> Explorer le Catalogue
+      </a>
+      <a routerLink="/faq" class="btn-app btn-app--surface btn-app--lg">
+        <i class="pi pi-question-circle"></i> Voir la FAQ
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,109 @@
+<!-- Page header -->
+<div style="background: var(--primary-700); padding: 2rem 0; color: #fff;">
+  <div class="app-container">
+    <h1 style="font-size:2rem; color:#fff; margin:0;">Catalogue</h1>
+    <p style="color:var(--primary-100); margin:.25rem 0 0; font-size:.9rem;">
+      {{ filtered.length }} produit{{ filtered.length !== 1 ? 's' : '' }} trouvé{{ filtered.length !== 1 ? 's' : '' }}
+    </p>
+  </div>
+</div>
+
+<div class="app-container" style="padding-top:1.5rem; padding-bottom:3rem;">
+  <div class="main-content-wrapper">
+
+    <!-- ── Sidebar filters ── -->
+    <aside class="filter-container" [class.filter-open]="filterOpen" [class.filter-closed]="!filterOpen"
+           style="min-width:220px; flex-shrink:0;">
+      <div class="filter-header d-flex align-items-center justify-content-between">
+        <h5 class="mb-0 d-flex align-items-center gap-2">
+          <i class="pi pi-filter" style="color:var(--primary-color);"></i>
+          <span>Filtres</span>
+        </h5>
+        <button class="filter-button" (click)="filterOpen = !filterOpen">
+          <i [class]="filterOpen ? 'pi pi-chevron-left' : 'pi pi-chevron-right'"></i>
+        </button>
+      </div>
+
+      <div class="filter-content" [class.show]="filterOpen">
+
+        <!-- Search -->
+        <div class="mb-3">
+          <label class="form-label" style="font-size:.75rem; font-weight:600; color:var(--text-secondary-color);">RECHERCHE</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-text" style="background:var(--surface-ground); border-color:var(--surface-border);">
+              <i class="pi pi-search" style="color:var(--primary-color); font-size:.75rem;"></i>
+            </span>
+            <input type="text" class="form-control form-control-sm"
+              [(ngModel)]="searchText" (ngModelChange)="applyFilters()"
+              placeholder="Nom, référence…"
+              style="background:var(--surface-ground); color:var(--text-color); border-color:var(--surface-border);">
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="mb-3">
+          <label class="form-label" style="font-size:.75rem; font-weight:600; color:var(--text-secondary-color);">CATÉGORIES</label>
+          <div class="d-flex flex-column gap-1">
+            <div *ngFor="let tax of taxonomies" class="form-check">
+              <input class="form-check-input" type="checkbox"
+                [id]="'cat-' + tax.reference"
+                [checked]="isCatSelected(tax.reference)"
+                (change)="toggleCat(tax.reference)">
+              <label class="form-check-label" [for]="'cat-' + tax.reference"
+                style="font-size:.82rem; cursor:pointer; color:var(--text-color);">
+                <i [class]="tax.icone || 'pi pi-tag'" [style.color]="tax.couleur" style="font-size:.8rem; margin-right:4px;"></i>
+                {{ getTaxFr(tax).designation || tax.reference }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price range -->
+        <div class="mb-3">
+          <label class="form-label" style="font-size:.75rem; font-weight:600; color:var(--text-secondary-color);">
+            PRIX TTC (MAD) — {{ priceRange[0] }} – {{ priceRange[1] }}
+          </label>
+          <p-slider [(ngModel)]="priceRange" [range]="true" [min]="0" [max]="maxPrice" [step]="50"
+            (onSlideEnd)="applyFilters()" styleClass="w-100 mt-2"></p-slider>
+        </div>
+
+        <!-- Stock only -->
+        <div class="mb-3 form-check">
+          <input class="form-check-input" type="checkbox" id="stockOnly"
+            [(ngModel)]="stockOnly" (ngModelChange)="applyFilters()">
+          <label class="form-check-label" for="stockOnly"
+            style="font-size:.82rem; color:var(--text-color);">En stock uniquement</label>
+        </div>
+
+        <!-- Reset -->
+        <button class="btn-app btn-app--surface w-100 btn-app--sm" (click)="resetFilters()">
+          <i class="pi pi-refresh"></i> Réinitialiser
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── Product grid ── -->
+    <div style="flex:1; min-width:0;">
+      <div *ngIf="loading" class="text-center py-5">
+        <i class="pi pi-spin pi-spinner" style="font-size:2rem; color:var(--primary-color);"></i>
+        <p class="mt-2" style="color:var(--text-secondary-color);">Chargement…</p>
+      </div>
+
+      <div *ngIf="!loading && filtered.length === 0" class="text-center py-5">
+        <i class="pi pi-search-minus" style="font-size:3rem; color:var(--text-secondary-color);"></i>
+        <p class="mt-3" style="color:var(--text-secondary-color);">Aucun produit ne correspond à vos filtres.</p>
+        <button class="btn-app btn-app--primary mt-2" (click)="resetFilters()">
+          <i class="pi pi-refresh"></i> Réinitialiser les filtres
+        </button>
+      </div>
+
+      <div *ngIf="!loading && filtered.length > 0"
+           class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+        <div class="col" *ngFor="let p of filtered">
+          <app-product-card [produit]="p"></app-product-card>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

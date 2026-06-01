@@ -1,0 +1,53 @@
+<div class="admin-login-page">
+  <div class="login-card">
+
+    <div class="text-center mb-4">
+      <div class="mb-3" style="font-size:2.5rem; color:var(--primary-color);">
+        <i class="bi bi-shield-check"></i>
+      </div>
+      <h4 style="font-weight:800; color:var(--text-color); margin-bottom:.25rem;">Kenz Bladi Admin</h4>
+      <p class="text-muted" style="font-size:.85rem; margin:0;">Connectez-vous pour accéder au panneau d'administration</p>
+    </div>
+
+    <div class="alert alert-danger py-2 px-3" *ngIf="error" style="font-size:.85rem; border-radius:var(--radius-sm);">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ error }}
+    </div>
+
+    <form (ngSubmit)="submit()" #f="ngForm">
+      <div class="mb-3">
+        <label class="form-label fw-semibold" style="font-size:.85rem;">Identifiant</label>
+        <div class="input-group">
+          <span class="input-group-text" style="background:var(--surface-hover); border-color:var(--surface-border);">
+            <i class="bi bi-person" style="color:var(--text-secondary-color);"></i>
+          </span>
+          <input type="text" class="form-control" [(ngModel)]="login" name="login"
+                 placeholder="admin" autocomplete="username"
+                 style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold" style="font-size:.85rem;">Mot de passe</label>
+        <div class="input-group">
+          <span class="input-group-text" style="background:var(--surface-hover); border-color:var(--surface-border);">
+            <i class="bi bi-lock" style="color:var(--text-secondary-color);"></i>
+          </span>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password"
+                 placeholder="••••••••" autocomplete="current-password"
+                 style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loading"
+              style="height:44px; font-weight:700; font-size:.9rem; border-radius:var(--radius-md);">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+        <i *ngIf="!loading" class="bi bi-box-arrow-in-right me-2"></i>
+        {{ loading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+    </form>
+
+    <p class="text-center mt-3 mb-0" style="font-size:.75rem; color:var(--text-secondary-color);">
+      <i class="bi bi-lock-fill me-1"></i>Accès réservé aux administrateurs
+    </p>
+  </div>
+</div>

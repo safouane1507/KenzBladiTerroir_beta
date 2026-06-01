@@ -1,0 +1,54 @@
+[
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012bb01"},
+    "etatObjet": "code-1",
+    "reference": "CAT-ALIMENTATION",
+    "translations": [
+      {"language": "fr", "designation": "Produits Alimentaires & Épices", "description": "Huiles, miel, épices, dattes et produits du terroir alimentaires"},
+      {"language": "ar", "designation": "المنتجات الغذائية والتوابل"},
+      {"language": "en", "designation": "Food Products & Spices"}
+    ],
+    "icone": "pi pi-shopping-bag",
+    "couleur": "#333305",
+    "parent": null
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012bb02"},
+    "etatObjet": "code-1",
+    "reference": "CAT-ARTISANAT",
+    "translations": [
+      {"language": "fr", "designation": "Artisanat & Art Berbère", "description": "Tapis, poteries, zellige, cuir, bijoux et créations artisanales"},
+      {"language": "ar", "designation": "الحرف اليدوية والفن الأمازيغي"},
+      {"language": "en", "designation": "Crafts & Berber Art"}
+    ],
+    "icone": "pi pi-palette",
+    "couleur": "#6c4ea7",
+    "parent": null
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012bb03"},
+    "etatObjet": "code-1",
+    "reference": "CAT-COSMETIQUE",
+    "translations": [
+      {"language": "fr", "designation": "Cosmétiques & Beauté Naturelle", "description": "Huile d'argan, savon beldi, ghassoul, rose de Damas et soins naturels"},
+      {"language": "ar", "designation": "مستحضرات التجميل والجمال الطبيعي"},
+      {"language": "en", "designation": "Cosmetics & Natural Beauty"}
+    ],
+    "icone": "pi pi-heart",
+    "couleur": "#e65c00",
+    "parent": null
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012bb04"},
+    "etatObjet": "code-1",
+    "reference": "CAT-TEXTILE",
+    "translations": [
+      {"language": "fr", "designation": "Textile & Habillement", "description": "Djellabas, kaftans, babouches, ceintures et vêtements traditionnels"},
+      {"language": "ar", "designation": "النسيج والملابس"},
+      {"language": "en", "designation": "Textile & Clothing"}
+    ],
+    "icone": "pi pi-tag",
+    "couleur": "#1a6b4a",
+    "parent": null
+  }
+]

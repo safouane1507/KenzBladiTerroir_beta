@@ -1,0 +1,107 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="admin-page-header">
+  <h2><i class="bi bi-tags"></i> Taxonomies</h2>
+  <button class="btn-app btn-app--primary" (click)="openNew()">
+    <i class="bi bi-plus-lg"></i> Nouvelle catégorie
+  </button>
+</div>
+
+<!-- Inline form -->
+<div class="form-section mb-3" *ngIf="showForm">
+  <div class="form-section-header">
+    <i class="bi" [class.bi-plus-circle]="!editing" [class.bi-pencil]="editing"></i>
+    {{ editing ? 'Modifier — ' + editing.reference : 'Nouvelle taxonomie' }}
+  </div>
+  <div class="form-section-body">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Référence *</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.reference"
+               [readonly]="!!editing" placeholder="ex: huile-olive"
+               style="font-family:monospace; border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Label FR</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.label.fr"
+               style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Label AR</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.label.ar" dir="rtl"
+               style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Label EN</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.label.en"
+               style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-9">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Description FR</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.description.fr"
+               style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">État</label>
+        <select class="form-select form-select-sm" [(ngModel)]="model.etatObjet"
+                style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+          <option value="code-1">Actif</option>
+          <option value="code-2">Inactif</option>
+        </select>
+      </div>
+    </div>
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn-app btn-app--primary btn-app--sm" (click)="save()">
+        <i class="bi bi-check-lg"></i> Enregistrer
+      </button>
+      <button class="btn-app btn-app--surface btn-app--sm" (click)="cancel()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="data-card">
+  <div class="data-card-body p-0">
+    <div *ngIf="loading" class="d-flex justify-content-center p-5">
+      <div class="spinner-border" style="color:var(--primary-color);"></div>
+    </div>
+    <div *ngIf="!loading" class="table-responsive">
+      <table class="table table-hover mb-0" style="font-size:.84rem;">
+        <thead style="background:var(--surface-hover);">
+          <tr>
+            <th style="padding:.75rem 1rem; color:var(--text-secondary-color); font-weight:600;">Référence</th>
+            <th style="padding:.75rem 1rem; color:var(--text-secondary-color); font-weight:600;">Label FR</th>
+            <th style="padding:.75rem 1rem; color:var(--text-secondary-color); font-weight:600;">Label AR</th>
+            <th style="padding:.75rem 1rem; color:var(--text-secondary-color); font-weight:600;">État</th>
+            <th style="padding:.75rem 1rem; color:var(--text-secondary-color); font-weight:600; text-align:right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of taxonomies" style="border-color:var(--surface-border);">
+            <td style="padding:.65rem 1rem; font-family:monospace; font-size:.78rem; color:var(--text-secondary-color);">{{ t.reference }}</td>
+            <td style="padding:.65rem 1rem; font-weight:500; color:var(--text-color);">{{ t.label?.fr }}</td>
+            <td style="padding:.65rem 1rem; direction:rtl;">{{ t.label?.ar }}</td>
+            <td style="padding:.65rem 1rem;">
+              <span class="status-badge" [class.active]="t.etatObjet==='code-1'" [class.inactive]="t.etatObjet==='code-2'">
+                {{ t.etatObjet === 'code-1' ? 'Actif' : 'Inactif' }}
+              </span>
+            </td>
+            <td style="padding:.65rem 1rem; text-align:right;">
+              <button class="btn btn-sm btn-outline-primary me-1" style="font-size:.75rem; padding:3px 8px;" (click)="openEdit(t)">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger" style="font-size:.75rem; padding:3px 8px;" (click)="confirmDelete(t)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="taxonomies.length === 0">
+            <td colspan="5" class="text-center py-4" style="color:var(--text-secondary-color);">
+              <i class="bi bi-inbox fs-4 d-block mb-2"></i> Aucune taxonomie
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

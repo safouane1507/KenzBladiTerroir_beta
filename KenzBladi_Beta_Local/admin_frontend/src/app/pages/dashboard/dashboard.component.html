@@ -1,0 +1,92 @@
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height:200px;">
+  <div class="spinner-border" style="color:var(--primary-color);"></div>
+</div>
+
+<ng-container *ngIf="!loading && stats">
+
+  <div class="admin-page-header">
+    <h2><i class="bi bi-speedometer2"></i> Tableau de bord</h2>
+    <a routerLink="/produits" class="btn-app btn-app--primary">
+      <i class="bi bi-plus-lg"></i> Nouveau produit
+    </a>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:rgba(51,51,5,.12); color:var(--primary-color);">
+          <i class="bi bi-box-seam"></i>
+        </div>
+        <div>
+          <div class="kpi-label">Total produits</div>
+          <div class="kpi-value">{{ stats.totalProduits }}</div>
+          <div class="kpi-sub">{{ stats.produitsActifs }} actifs</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:rgba(108,78,167,.12); color:var(--secondary-color);">
+          <i class="bi bi-tags"></i>
+        </div>
+        <div>
+          <div class="kpi-label">Catégories</div>
+          <div class="kpi-value">{{ stats.totalCategories }}</div>
+          <div class="kpi-sub">Taxonomies actives</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:rgba(23,162,184,.12); color:#17a2b8;">
+          <i class="bi bi-question-circle"></i>
+        </div>
+        <div>
+          <div class="kpi-label">FAQs</div>
+          <div class="kpi-value">{{ stats.totalFaqs }}</div>
+          <div class="kpi-sub">Sections FAQ</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:rgba(40,167,69,.12); color:#28a745;">
+          <i class="bi bi-chat-dots"></i>
+        </div>
+        <div>
+          <div class="kpi-label">Sessions chat</div>
+          <div class="kpi-value">{{ stats.totalSessions }}</div>
+          <div class="kpi-sub">Conversations Kenza</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="row g-3">
+    <div class="col-12 col-lg-8">
+      <div class="data-card">
+        <div class="data-card-header">
+          <h5><i class="bi bi-bar-chart"></i> Produits par catégorie</h5>
+        </div>
+        <div class="data-card-body" style="height:280px;">
+          <p-chart type="bar" [data]="categoryChartData" [options]="categoryChartOptions"
+                   [style]="{'height':'100%'}"></p-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="data-card">
+        <div class="data-card-header">
+          <h5><i class="bi bi-pie-chart"></i> État des stocks</h5>
+        </div>
+        <div class="data-card-body" style="height:280px; display:flex; align-items:center; justify-content:center;">
+          <p-chart type="doughnut" [data]="stockChartData" [options]="stockChartOptions"
+                   [style]="{'height':'240px','width':'240px'}"></p-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-container>

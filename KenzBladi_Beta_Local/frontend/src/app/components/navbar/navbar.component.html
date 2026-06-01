@@ -1,0 +1,30 @@
+<nav class="app-navbar">
+  <a routerLink="/" class="nav-brand">
+    🌿 Kenz Bladi
+  </a>
+
+  <ul class="nav-links">
+    <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Accueil</a></li>
+    <li><a routerLink="/catalogue" routerLinkActive="active-link">Catalogue</a></li>
+    <li><a routerLink="/faq" routerLinkActive="active-link">FAQ</a></li>
+    <li><a routerLink="/a-propos" routerLinkActive="active-link">À Propos</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="btn-theme" (click)="toggleTheme()" [title]="themeService.darkMode ? 'Mode clair' : 'Mode sombre'">
+      <i [class]="themeService.darkMode ? 'pi pi-sun' : 'pi pi-moon'"></i>
+    </button>
+    <button class="btn-hamburger" (click)="toggleMobile()">
+      <i [class]="mobileOpen ? 'pi pi-times' : 'pi pi-bars'"></i>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" *ngIf="mobileOpen">
+  <ul>
+    <li><a routerLink="/" (click)="mobileOpen=false">Accueil</a></li>
+    <li><a routerLink="/catalogue" (click)="mobileOpen=false">Catalogue</a></li>
+    <li><a routerLink="/faq" (click)="mobileOpen=false">FAQ</a></li>
+    <li><a routerLink="/a-propos" (click)="mobileOpen=false">À Propos</a></li>
+  </ul>
+</div>

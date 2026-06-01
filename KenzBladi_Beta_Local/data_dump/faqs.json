@@ -1,0 +1,94 @@
+[
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012cc01"},
+    "etatObjet": "code-1",
+    "etatDePublication": "code_541",
+    "etatFaq": "code_4268",
+    "reference": "FAQ-LIVRAISON",
+    "translations": [
+      {
+        "language": "fr",
+        "designation": "Livraison & Délais",
+        "description": "Informations sur les délais, coûts et modes de livraison",
+        "nomResponsable": "Équipe Kenz Bladi"
+      }
+    ],
+    "emailResponsable": "support@kenzbladi.ma",
+    "questions": [
+      {
+        "_id": {"$oid": "65a1b2c3d4e5f6789012dd01"},
+        "translations": [
+          {"language": "fr", "question": "Quels sont les délais de livraison ?", "reponse": "La livraison standard au Maroc est de 3 à 5 jours ouvrables. Pour les livraisons internationales (Europe, Moyen-Orient), comptez 7 à 14 jours. Nous proposons aussi la livraison express en 24-48h dans les grandes villes marocaines."},
+          {"language": "ar", "question": "ما هي مواعيد التسليم؟", "reponse": "التوصيل العادي في المغرب من 3 إلى 5 أيام عمل"},
+          {"language": "en", "question": "What are the delivery times?", "reponse": "Standard delivery in Morocco is 3-5 business days. International shipping to Europe takes 7-14 days."}
+        ]
+      },
+      {
+        "_id": {"$oid": "65a1b2c3d4e5f6789012dd02"},
+        "translations": [
+          {"language": "fr", "question": "La livraison est-elle gratuite ?", "reponse": "La livraison est gratuite pour toute commande supérieure à 500 MAD au Maroc. En dessous de ce seuil, des frais de port de 35 MAD s'appliquent. Pour l'international, les tarifs varient selon la destination."}
+        ]
+      },
+      {
+        "_id": {"$oid": "65a1b2c3d4e5f6789012dd03"},
+        "translations": [
+          {"language": "fr", "question": "Puis-je retourner un produit ?", "reponse": "Oui, vous disposez de 14 jours après réception pour retourner un produit non ouvert dans son emballage d'origine. Les produits alimentaires et cosmétiques ouverts ne sont pas retournables pour des raisons d'hygiène. Contactez notre service client à support@kenzbladi.ma."}
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012cc02"},
+    "etatObjet": "code-1",
+    "etatDePublication": "code_541",
+    "etatFaq": "code_4268",
+    "reference": "FAQ-PAIEMENT",
+    "translations": [
+      {
+        "language": "fr",
+        "designation": "Paiement & Sécurité",
+        "description": "Méthodes de paiement acceptées et sécurité des transactions",
+        "nomResponsable": "Équipe Kenz Bladi"
+      }
+    ],
+    "emailResponsable": "support@kenzbladi.ma",
+    "questions": [
+      {
+        "_id": {"$oid": "65a1b2c3d4e5f6789012dd04"},
+        "translations": [
+          {"language": "fr", "question": "Quels moyens de paiement acceptez-vous ?", "reponse": "Nous acceptons : les cartes bancaires (Visa, Mastercard, CMI), le virement bancaire, le paiement à la livraison (COD) pour les commandes au Maroc, et PayPal pour les clients internationaux."}
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012cc03"},
+    "etatObjet": "code-1",
+    "etatDePublication": "code_541",
+    "etatFaq": "code_4268",
+    "reference": "FAQ-PRODUITS",
+    "translations": [
+      {
+        "language": "fr",
+        "designation": "Authenticité & Qualité des Produits",
+        "description": "Comment garantissons-nous l'authenticité des produits du terroir",
+        "nomResponsable": "Équipe Kenz Bladi"
+      }
+    ],
+    "emailResponsable": "support@kenzbladi.ma",
+    "questions": [
+      {
+        "_id": {"$oid": "65a1b2c3d4e5f6789012dd05"},
+        "translations": [
+          {"language": "fr", "question": "Comment garantissez-vous l'authenticité des produits ?", "reponse": "Tous nos producteurs sont vérifiés et référencés. Nous travaillons directement avec des coopératives, artisans et agriculteurs locaux. Chaque produit dispose d'un certificat d'origine. Pour les produits AOP/IGP, les certifications officielles sont disponibles à la demande."}
+        ]
+      },
+      {
+        "_id": {"$oid": "65a1b2c3d4e5f6789012dd06"},
+        "translations": [
+          {"language": "fr", "question": "Qui est Kenz Bladi ?", "reponse": "Kenz Bladi (littéralement 'Les trésors de mon pays') est une marketplace marocaine fondée pour valoriser et promouvoir les produits du terroir authentiques. Nous connectons artisans, coopératives agricoles et petits producteurs locaux avec les consommateurs au Maroc et à l'international. Notre mission : préserver le patrimoine culturel et gastronomique marocain tout en soutenant l'économie locale."}
+        ]
+      }
+    ]
+  }
+]

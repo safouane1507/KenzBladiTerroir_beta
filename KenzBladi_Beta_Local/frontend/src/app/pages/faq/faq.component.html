@@ -1,0 +1,54 @@
+<!-- Header -->
+<div style="background: var(--primary-700); padding: 2.5rem 0; color: #fff;">
+  <div class="app-container text-center">
+    <i class="pi pi-question-circle" style="font-size:2.5rem; color:var(--primary-200); display:block; margin-bottom:.75rem;"></i>
+    <h1 style="font-size:2.25rem; color:#fff; margin:0;">Foire Aux Questions</h1>
+    <p style="color:var(--primary-100); margin:.5rem 0 0; font-size:.95rem;">
+      Tout ce que vous devez savoir sur Kenz Bladi
+    </p>
+  </div>
+</div>
+
+<div class="app-container" style="padding-top:2.5rem; padding-bottom:3rem; max-width:860px;">
+
+  <div *ngIf="loading" class="text-center py-5">
+    <i class="pi pi-spin pi-spinner" style="font-size:2rem; color:var(--primary-color);"></i>
+  </div>
+
+  <div *ngIf="!loading && !faqs.length" class="text-center py-5">
+    <p style="color:var(--text-secondary-color);">Aucune FAQ disponible. Vérifiez que le backend est lancé.</p>
+  </div>
+
+  <ng-container *ngFor="let section of faqs">
+    <div class="mb-4">
+      <h3 style="font-size:1.2rem; font-weight:700; color:var(--primary-color); margin-bottom:1rem; display:flex; align-items:center; gap:.5rem;">
+        <i class="pi pi-folder-open"></i>
+        {{ getFr(section).designation || section.reference }}
+      </h3>
+      <p *ngIf="getFr(section).description" style="color:var(--text-secondary-color); font-size:.875rem; margin-bottom:1rem;">
+        {{ getFr(section).description }}
+      </p>
+
+      <p-accordion [multiple]="true">
+        <p-accordionTab *ngFor="let q of section.questions"
+          [header]="getQFr(q).question || ''"
+          [headerStyleClass]="'faq-header'">
+          <p style="color:var(--text-secondary-color); line-height:1.7; font-size:.9rem; margin:0;">
+            {{ getQFr(q).reponse }}
+          </p>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </ng-container>
+
+  <!-- Contact nudge -->
+  <div style="background:var(--highlight-bg); border:1px solid var(--primary-200); border-radius:var(--radius-md); padding:1.5rem; margin-top:2rem; text-align:center;">
+    <h5 style="color:var(--primary-color); margin-bottom:.5rem;">Vous n'avez pas trouvé votre réponse ?</h5>
+    <p style="color:var(--text-secondary-color); font-size:.875rem; margin-bottom:1rem;">
+      Kenza, notre assistante IA, peut répondre à vos questions en temps réel.
+    </p>
+    <span style="background:var(--primary-color); color:#fff; padding:.5rem 1.25rem; border-radius:var(--radius-md); font-size:.875rem; font-weight:600;">
+      🧿 Parlez à Kenza (bouton en bas à droite)
+    </span>
+  </div>
+</div>

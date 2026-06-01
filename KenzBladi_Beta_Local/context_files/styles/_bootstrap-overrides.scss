@@ -1,0 +1,148 @@
+// ============================================================
+// _bootstrap-overrides.scss
+// ============================================================
+// Bridge Bootstrap 5 → tokens dynamiques.
+// Ces overrides écrasent les vars Bootstrap pour qu'elles
+// suivent le thème PrimeNG en temps réel.
+// ============================================================
+
+// ----------------------------------------------------------
+// Bridge Bootstrap vars → tokens PrimeNG
+// ThemeConfiguratorComponent génère --primary-color dynamiquement,
+// Bootstrap doit suivre.
+// ----------------------------------------------------------
+:root {
+  // Primary Bootstrap → primary PrimeNG
+  --bs-primary:          var(--primary-color);
+  --bs-primary-bg-subtle: var(--highlight-bg);
+
+
+  // Body → surface PrimeNG
+  --bs-body-bg:          var(--surface-ground);
+  --bs-body-color:       var(--text-color);
+  --bs-secondary-color : var(--text-secondary-color);
+  --bs-tertiary-color: color-mix(in srgb, var(--text-secondary-color) 75%, transparent);
+  --bs-emphasis-color: var(--text-color);
+
+  // Border → surface border PrimeNG
+  --bs-border-color:     var(--surface-border);
+
+  // Link → primary PrimeNG
+  --bs-link-color:       var(--primary-color);
+  --bs-link-hover-color: var(--primary-hover-color);
+
+  // Card → surface-card PrimeNG
+  --bs-card-bg:          var(--surface-card);
+
+  // Border radius → tokens app
+  --bs-border-radius:    var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-md);
+  --bs-border-radius-xl: var(--radius-lg);
+
+  --link-color: var(--text-color-secondary); ////////////////////////
+  // --link-hover-color: var(--text-hover-color);
+}
+
+// ----------------------------------------------------------
+// Neutralisations : éviter les conflits Bootstrap ↔ PrimeNG
+// ----------------------------------------------------------
+
+// Pas de box-shadow sur focus Bootstrap (PrimeNG gère)
+button:focus,
+.btn:focus,
+a:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+// (les composants surchargent si besoin)
+a { color: var(--link-color); }
+// a:hover { color: var(--link-hover-color); }
+
+// Dropdowns Bootstrap derrière les overlays PrimeNG
+.dropdown-menu {
+  z-index: 1200;
+}
+
+// ----------------------------------------------------------
+// Harmonisation .btn Bootstrap → tokens app
+// Les .btn Bootstrap dans les templates anciens adoptent
+// la même apparence que .btn-app
+// ----------------------------------------------------------
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color:     var(--primary-color) !important;
+  color:            var(--primary-color-text) !important;
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover-color) !important;
+  border-color:     var(--primary-hover-color) !important;
+}
+.btn-primary:active {
+  background-color: var(--primary-active-color) !important;
+}
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--focus-ring-color) !important;
+}
+
+// Outline primary Bootstrap
+.btn-outline-primary {
+  color:        var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary-color) !important;
+  color:            var(--primary-color-text) !important;
+}
+.table{
+  --bs-table-bg : var(--surface-card)
+}
+.table>:not(caption)>*>*{
+  background-color: var(--surface-card)
+}
+
+// .table {
+//   // Reset needed for nesting tables
+//   --#{$prefix}table-color-type: initial;
+//   --#{$prefix}table-bg-type: initial;
+//   --#{$prefix}table-color-state: initial;
+//   --#{$prefix}table-bg-state: initial;
+//   // End of reset
+//   --#{$prefix}table-color: #{$table-color};
+//   --#{$prefix}table-bg: #{$table-bg};
+//   --#{$prefix}table-border-color: #{$table-border-color};
+//   --#{$prefix}table-accent-bg: #{$table-accent-bg};
+//   --#{$prefix}table-striped-color: #{$table-striped-color};
+//   --#{$prefix}table-striped-bg: #{$table-striped-bg};
+//   --#{$prefix}table-active-color: #{$table-active-color};
+//   --#{$prefix}table-active-bg: #{$table-active-bg};
+//   --#{$prefix}table-hover-color: #{$table-hover-color};
+//   --#{$prefix}table-hover-bg: #{$table-hover-bg};
+
+//   width: 100%;
+//   margin-bottom: $spacer;
+//   vertical-align: $table-cell-vertical-align;
+//   border-color: var(--#{$prefix}table-border-color);
+
+//   // Target th & td
+//   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
+//   // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
+//   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
+//   // stylelint-disable-next-line selector-max-universal
+//   > :not(caption) > * > * {
+//     padding: $table-cell-padding-y $table-cell-padding-x;
+//     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
+//     color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
+//     background-color: var(--#{$prefix}table-bg);
+//     border-bottom-width: $table-border-width;
+//     box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
+//   }
+
+//   > tbody {
+//     vertical-align: inherit;
+//   }
+
+//   > thead {
+//     vertical-align: bottom;
+//   }
+// }

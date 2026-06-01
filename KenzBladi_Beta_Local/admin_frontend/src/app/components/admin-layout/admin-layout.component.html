@@ -1,0 +1,54 @@
+<div class="admin-layout">
+
+  <!-- Sidebar backdrop (mobile) -->
+  <div class="sidebar-backdrop" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" [class.open]="sidebarOpen">
+    <div class="sidebar-logo">
+      <i class="bi bi-shield-check"></i>
+      <span>Kenz Bladi Admin</span>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="nav-section-label">Navigation</li>
+      <li *ngFor="let item of navItems">
+        <a [routerLink]="item.route"
+           routerLinkActive="active-nav"
+           (click)="closeSidebar()">
+          <i class="bi" [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button (click)="logout()">
+        <i class="bi bi-box-arrow-left"></i>
+        <span>Déconnexion</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="admin-content">
+
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <button class="btn btn-sm btn-link text-secondary d-md-none p-0" (click)="toggleSidebar()">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <span class="topbar-title">Administration</span>
+      <div class="topbar-user">
+        <div class="user-avatar">{{ userInitial }}</div>
+        <span>{{ user?.login }}</span>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <main class="admin-page-content">
+      <router-outlet />
+    </main>
+
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="admin-page-header">
+  <h2><i class="bi bi-chat-dots"></i> Sessions Chat Kenza</h2>
+  <button class="btn-app btn-app--surface" (click)="confirmClearAll()" [disabled]="sessions.length === 0"
+          style="border-color:var(--color-danger); color:var(--color-danger);">
+    <i class="bi bi-trash"></i> Tout effacer
+  </button>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center p-5">
+  <div class="spinner-border" style="color:var(--primary-color);"></div>
+</div>
+
+<div *ngIf="!loading" class="row g-3">
+
+  <!-- Sessions list -->
+  <div [class]="activeSession ? 'col-12 col-lg-4' : 'col-12'">
+    <div class="data-card">
+      <div class="data-card-header">
+        <h5><i class="bi bi-list-ul"></i> {{ sessions.length }} session(s)</h5>
+      </div>
+      <div class="data-card-body p-0">
+
+        <div *ngIf="sessions.length === 0" class="text-center py-4" style="color:var(--text-secondary-color);">
+          <i class="bi bi-inbox fs-4 d-block mb-2"></i> Aucune session
+        </div>
+
+        <div *ngFor="let s of sessions"
+             class="d-flex align-items-center justify-content-between px-3 py-2"
+             style="border-bottom:1px solid var(--surface-border); cursor:pointer; transition:background .15s ease;"
+             [style.background]="activeSession?.sessionId===s.sessionId ? 'var(--surface-hover)' : 'transparent'"
+             (click)="openSession(s)">
+          <div style="min-width:0;">
+            <div style="font-size:.78rem; font-family:monospace; color:var(--text-secondary-color); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              {{ s.sessionId }}
+            </div>
+            <div style="font-size:.82rem; color:var(--text-color); font-weight:500;">
+              {{ s.messageCount || s.turns?.length || 0 }} message(s)
+            </div>
+            <div style="font-size:.72rem; color:var(--text-secondary-color);">
+              {{ s.lastUpdated | date:'dd/MM/yyyy HH:mm' }}
+            </div>
+          </div>
+          <div class="d-flex gap-1 ms-2 flex-shrink-0">
+            <button class="btn btn-sm btn-outline-danger" style="font-size:.72rem; padding:3px 7px;"
+                    (click)="$event.stopPropagation(); confirmDelete(s)" title="Supprimer">
+              <i class="bi bi-trash"></i>
+            </button>
+            <i class="bi align-self-center ms-1"
+               [class.bi-chevron-right]="activeSession?.sessionId!==s.sessionId"
+               [class.bi-chevron-down]="activeSession?.sessionId===s.sessionId"
+               style="color:var(--text-secondary-color); font-size:.75rem;"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Conversation viewer -->
+  <div class="col-12 col-lg-8" *ngIf="activeSession">
+    <div class="data-card">
+      <div class="data-card-header">
+        <h5><i class="bi bi-chat-text"></i> Conversation</h5>
+        <span style="font-size:.72rem; font-family:monospace; color:var(--text-secondary-color);">
+          {{ activeSession.sessionId }}
+        </span>
+      </div>
+      <div class="data-card-body" style="max-height:520px; overflow-y:auto;">
+
+        <div *ngIf="loadingMessages" class="d-flex justify-content-center p-4">
+          <div class="spinner-border spinner-border-sm" style="color:var(--primary-color);"></div>
+        </div>
+
+        <div *ngIf="!loadingMessages">
+          <div *ngFor="let msg of activeMessages"
+               class="mb-3 d-flex"
+               [class.justify-content-end]="msg.role==='user'"
+               [class.justify-content-start]="msg.role!=='user'">
+            <div style="max-width:80%;">
+              <!-- Agent badge -->
+              <div *ngIf="msg.role==='assistant' && msg.agent"
+                   class="mb-1" style="font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px;"
+                   [style.color]="agentColor(msg.agent)">
+                <i class="bi bi-robot me-1"></i>{{ msg.agent }}
+              </div>
+
+              <div class="px-3 py-2 rounded-3"
+                   [style.background]="msg.role==='user' ? 'var(--primary-color)' : 'var(--surface-hover)'"
+                   [style.color]="msg.role==='user' ? '#fff' : 'var(--text-color)'"
+                   style="font-size:.84rem; line-height:1.5; white-space:pre-wrap; word-break:break-word;">
+                {{ msg.content }}
+              </div>
+
+              <div style="font-size:.68rem; color:var(--text-secondary-color); margin-top:3px;"
+                   [class.text-end]="msg.role==='user'">
+                {{ msg.timestamp | date:'HH:mm' }}
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="activeMessages.length === 0" class="text-center py-3" style="color:var(--text-secondary-color); font-size:.84rem;">
+            Aucun message dans cette session.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

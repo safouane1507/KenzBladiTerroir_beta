@@ -1,0 +1,137 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="admin-page-header">
+  <h2><i class="bi bi-question-circle"></i> FAQs</h2>
+  <button class="btn-app btn-app--primary" (click)="openNew()">
+    <i class="bi bi-plus-lg"></i> Nouvelle section
+  </button>
+</div>
+
+<!-- Inline form -->
+<div class="form-section mb-3" *ngIf="showForm">
+  <div class="form-section-header">
+    <i class="bi" [class.bi-plus-circle]="!editing" [class.bi-pencil]="editing"></i>
+    {{ editing ? 'Modifier section FAQ' : 'Nouvelle section FAQ' }}
+  </div>
+  <div class="form-section-body">
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Titre FR *</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.titre.fr"
+               style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">Titre AR</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="model.titre.ar" dir="rtl"
+               style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label fw-semibold" style="font-size:.82rem;">État</label>
+        <select class="form-select form-select-sm" [(ngModel)]="model.etatObjet"
+                style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+          <option value="code-1">Actif</option>
+          <option value="code-2">Inactif</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Questions -->
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <span style="font-size:.82rem; font-weight:700; color:var(--text-color);">
+        Questions ({{ model.questions.length }})
+      </span>
+      <button type="button" class="btn btn-sm btn-outline-primary" style="font-size:.75rem;" (click)="addQuestion()">
+        <i class="bi bi-plus"></i> Ajouter une Q&amp;R
+      </button>
+    </div>
+
+    <div *ngFor="let q of model.questions; let i = index"
+         class="p-3 mb-2 rounded" style="background:var(--surface-hover); border:1px solid var(--surface-border);">
+      <div class="d-flex justify-content-between mb-2">
+        <span style="font-size:.78rem; font-weight:600; color:var(--text-secondary-color);">Q{{ i+1 }}</span>
+        <button type="button" class="btn btn-sm btn-outline-danger" style="font-size:.72rem; padding:1px 6px;" (click)="removeQuestion(i)">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-6">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="q.question.fr" placeholder="Question FR"
+                 style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="q.question.ar" placeholder="Question AR" dir="rtl"
+                 style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);">
+        </div>
+        <div class="col-md-6">
+          <textarea class="form-control form-control-sm" [(ngModel)]="q.reponse.fr" placeholder="Réponse FR" rows="2"
+                    style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);"></textarea>
+        </div>
+        <div class="col-md-6">
+          <textarea class="form-control form-control-sm" [(ngModel)]="q.reponse.ar" placeholder="Réponse AR" rows="2" dir="rtl"
+                    style="border-color:var(--surface-border); background:var(--surface-card); color:var(--text-color);"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn-app btn-app--primary btn-app--sm" (click)="save()">
+        <i class="bi bi-check-lg"></i> Enregistrer
+      </button>
+      <button class="btn-app btn-app--surface btn-app--sm" (click)="cancel()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ list -->
+<div *ngIf="loading" class="d-flex justify-content-center p-5">
+  <div class="spinner-border" style="color:var(--primary-color);"></div>
+</div>
+
+<div *ngIf="!loading">
+  <div *ngFor="let f of faqs" class="data-card mb-2">
+    <div class="data-card-header" style="cursor:pointer;" (click)="toggleExpand(f.id || f._id)">
+      <h5>
+        <i class="bi bi-chat-square-text"></i>
+        {{ f.titre?.fr }}
+        <small class="fw-normal ms-2" style="font-size:.72rem; color:var(--text-secondary-color);">
+          {{ f.questions?.length || 0 }} question(s)
+        </small>
+      </h5>
+      <div class="d-flex align-items-center gap-2">
+        <span class="status-badge" [class.active]="f.etatObjet==='code-1'" [class.inactive]="f.etatObjet==='code-2'">
+          {{ f.etatObjet === 'code-1' ? 'Actif' : 'Inactif' }}
+        </span>
+        <button class="btn btn-sm btn-outline-primary" style="font-size:.75rem; padding:3px 8px;"
+                (click)="$event.stopPropagation(); openEdit(f)">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button class="btn btn-sm btn-outline-danger" style="font-size:.75rem; padding:3px 8px;"
+                (click)="$event.stopPropagation(); confirmDelete(f)">
+          <i class="bi bi-trash"></i>
+        </button>
+        <i class="bi" [class.bi-chevron-down]="expandedId !== (f.id||f._id)"
+                      [class.bi-chevron-up]="expandedId === (f.id||f._id)"
+                      style="color:var(--text-secondary-color);"></i>
+      </div>
+    </div>
+
+    <div class="data-card-body" *ngIf="expandedId === (f.id || f._id)">
+      <div *ngFor="let q of f.questions; let i = index"
+           class="mb-2 p-2 rounded" style="background:var(--surface-hover);">
+        <div style="font-size:.82rem; font-weight:600; color:var(--text-color); margin-bottom:.25rem;">
+          {{ i+1 }}. {{ q.question?.fr }}
+        </div>
+        <div style="font-size:.8rem; color:var(--text-secondary-color);">{{ q.reponse?.fr }}</div>
+      </div>
+      <div *ngIf="!f.questions?.length" style="font-size:.82rem; color:var(--text-secondary-color);">
+        Aucune question dans cette section.
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="faqs.length === 0" class="data-card">
+    <div class="data-card-body text-center py-4" style="color:var(--text-secondary-color);">
+      <i class="bi bi-inbox fs-4 d-block mb-2"></i> Aucune section FAQ
+    </div>
+  </div>
+</div>

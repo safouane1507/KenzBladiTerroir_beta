@@ -1,0 +1,250 @@
+[
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012aa01"},
+    "refProduit": "TERROIR-ARGAN-001",
+    "etatDePublication": "code_541",
+    "etatObjet": "code-1",
+    "typeProduit": "physique",
+    "classe": "code_514",
+    "tarifUHTPardefaut": 180,
+    "tvaParDefaut": 20,
+    "monnaie": {"code": "MAD", "symbole": "د.م."},
+    "region": ["Souss-Massa"],
+    "pays": ["MA"],
+    "imageProduit": "tr1.jpg",
+    "caracteristiquePhysique": [
+      {"type": "Volume", "valeur": "100ml"},
+      {"type": "Origine", "valeur": "Agadir, Maroc"},
+      {"type": "Certification", "valeur": "Bio, AOP"}
+    ],
+    "indicationDuStock": {
+      "etatStock": "En stock",
+      "quantiteDisponible": 50
+    },
+    "translations": [
+      {
+        "language": "fr",
+        "designationProduit": "Huile d'Argan Pure Biologique",
+        "slogan": "L'or liquide du Maroc",
+        "descriptifProduit": "Extraite à froid des amandons d'arganier du Souss-Massa, cette huile d'argan 100% pure et biologique est certifiée AOP. Idéale pour la cuisine gastronomique et les soins de beauté. Produite par la coopérative féminine Amal d'Agadir.",
+        "tags": ["argan", "bio", "huile", "cosmétique", "cuisine", "AOP", "coopérative"]
+      },
+      {
+        "language": "ar",
+        "designationProduit": "زيت أركان عضوي خالص",
+        "slogan": "الذهب السائل من المغرب",
+        "descriptifProduit": "مستخرج على البارد من بذور شجر الأركان في سوس ماسة"
+      },
+      {
+        "language": "en",
+        "designationProduit": "Pure Organic Argan Oil",
+        "slogan": "Morocco's liquid gold",
+        "descriptifProduit": "Cold-pressed from Souss-Massa argan kernels. 100% pure, AOP certified, produced by the Amal women's cooperative."
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012aa02"},
+    "refProduit": "TERROIR-SAFRAN-001",
+    "etatDePublication": "code_541",
+    "etatObjet": "code-1",
+    "typeProduit": "physique",
+    "classe": "code_514",
+    "tarifUHTPardefaut": 350,
+    "tvaParDefaut": 20,
+    "monnaie": {"code": "MAD", "symbole": "د.م."},
+    "region": ["Souss-Massa", "Drâa-Tafilalet"],
+    "pays": ["MA"],
+    "imageProduit": "tr3.jpg",
+    "caracteristiquePhysique": [
+      {"type": "Poids", "valeur": "1g"},
+      {"type": "Origine", "valeur": "Taliouine, Maroc"},
+      {"type": "Grade", "valeur": "1er choix — Catégorie I"}
+    ],
+    "indicationDuStock": {
+      "etatStock": "En stock",
+      "quantiteDisponible": 30
+    },
+    "translations": [
+      {
+        "language": "fr",
+        "designationProduit": "Safran de Taliouine Premium",
+        "slogan": "L'épice la plus précieuse du Maroc",
+        "descriptifProduit": "Le safran de Taliouine est réputé mondialement pour sa qualité exceptionnelle, sa couleur rouge intense et son arôme puissant. Classé parmi les meilleurs safrans au monde. Récolté manuellement par les femmes de la région de Taliouine chaque automne.",
+        "tags": ["safran", "épice", "Taliouine", "premium", "gastronomie", "IG"]
+      },
+      {
+        "language": "ar",
+        "designationProduit": "زعفران تالوين الممتاز",
+        "slogan": "أغلى توابل المغرب"
+      },
+      {
+        "language": "en",
+        "designationProduit": "Premium Taliouine Saffron",
+        "slogan": "Morocco's most precious spice"
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012aa03"},
+    "refProduit": "TERROIR-TAPIS-001",
+    "etatDePublication": "code_541",
+    "etatObjet": "code-1",
+    "typeProduit": "physique",
+    "classe": "code_8300",
+    "tarifUHTPardefaut": 2200,
+    "tvaParDefaut": 20,
+    "monnaie": {"code": "MAD", "symbole": "د.م."},
+    "region": ["Marrakech-Safi"],
+    "pays": ["MA"],
+    "imageProduit": "tr7.jpg",
+    "caracteristiquePhysique": [
+      {"type": "Dimensions", "valeur": "200cm × 300cm"},
+      {"type": "Matière", "valeur": "Laine naturelle 100%"},
+      {"type": "Origine", "valeur": "Marrakech, Maroc"},
+      {"type": "Technique", "valeur": "Tissage berbère fait main"}
+    ],
+    "indicationDuStock": {
+      "etatStock": "En stock",
+      "quantiteDisponible": 8
+    },
+    "translations": [
+      {
+        "language": "fr",
+        "designationProduit": "Tapis Berbère Authentique — Motifs Zelliges",
+        "slogan": "Un chef-d'œuvre tissé à la main",
+        "descriptifProduit": "Tapis berbère authentique de Marrakech, entièrement fait main par des artisans de la médina. Laine naturelle filée et teinte avec des colorants végétaux. Motifs géométriques berbères traditionnels inspirés des zelliges. Chaque pièce est unique.",
+        "tags": ["tapis", "berbère", "artisanat", "laine", "marrakech", "fait main", "zellige"]
+      },
+      {
+        "language": "ar",
+        "designationProduit": "زربية أمازيغية أصيلة — نقوش الزليج"
+      },
+      {
+        "language": "en",
+        "designationProduit": "Authentic Berber Rug — Zellige Motifs"
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012aa04"},
+    "refProduit": "TERROIR-MIEL-001",
+    "etatDePublication": "code_541",
+    "etatObjet": "code-1",
+    "typeProduit": "physique",
+    "classe": "code_514",
+    "tarifUHTPardefaut": 120,
+    "tvaParDefaut": 20,
+    "monnaie": {"code": "MAD", "symbole": "د.م."},
+    "region": ["Fès-Meknès"],
+    "pays": ["MA"],
+    "imageProduit": "tr5.jpeg",
+    "caracteristiquePhysique": [
+      {"type": "Volume", "valeur": "500g"},
+      {"type": "Origine", "valeur": "Ifrane, Maroc"},
+      {"type": "Type", "valeur": "Miel de thym sauvage"}
+    ],
+    "indicationDuStock": {
+      "etatStock": "En stock",
+      "quantiteDisponible": 45
+    },
+    "translations": [
+      {
+        "language": "fr",
+        "designationProduit": "Miel de Thym Sauvage d'Ifrane",
+        "slogan": "La douceur des montagnes du Moyen Atlas",
+        "descriptifProduit": "Miel artisanal récolté dans les forêts de cèdres et les prairies de thym sauvage du Moyen Atlas marocain, à 1600m d'altitude. Non filtré, non chauffé, il conserve toutes ses propriétés naturelles et son goût intense de thym.",
+        "tags": ["miel", "thym", "Ifrane", "Moyen Atlas", "bio", "naturel", "artisanal"]
+      },
+      {
+        "language": "ar",
+        "designationProduit": "عسل الزعتر البري من إفران"
+      },
+      {
+        "language": "en",
+        "designationProduit": "Wild Thyme Honey from Ifrane"
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012aa05"},
+    "refProduit": "TERROIR-POTERIE-001",
+    "etatDePublication": "code_541",
+    "etatObjet": "code-1",
+    "typeProduit": "physique",
+    "classe": "code_8300",
+    "tarifUHTPardefaut": 450,
+    "tvaParDefaut": 20,
+    "monnaie": {"code": "MAD", "symbole": "د.م."},
+    "region": ["Fès-Meknès"],
+    "pays": ["MA"],
+    "imageProduit": "tr8.jpg",
+    "caracteristiquePhysique": [
+      {"type": "Matière", "valeur": "Argile rouge de Fès"},
+      {"type": "Technique", "valeur": "Tournage + émaillage à la main"},
+      {"type": "Hauteur", "valeur": "25cm"},
+      {"type": "Origine", "valeur": "Médina de Fès"}
+    ],
+    "indicationDuStock": {
+      "etatStock": "En stock",
+      "quantiteDisponible": 20
+    },
+    "translations": [
+      {
+        "language": "fr",
+        "designationProduit": "Poterie de Fès — Tajine Bleu Artisanal",
+        "slogan": "L'art millénaire de la céramique fassi",
+        "descriptifProduit": "Tajine en argile rouge de Fès, entièrement façonné et peint à la main dans la médina de Fès par des maîtres potiers. Décors floraux bleus cobalt caractéristiques de la céramique fassi. Idéal pour la cuisson traditionnelle au charbon ou au gaz.",
+        "tags": ["poterie", "Fès", "tajine", "céramique", "artisanat", "bleu cobalt", "faience"]
+      },
+      {
+        "language": "ar",
+        "designationProduit": "فخار فاس — طاجين أزرق حرفي"
+      },
+      {
+        "language": "en",
+        "designationProduit": "Fez Pottery — Artisan Blue Tajine"
+      }
+    ]
+  },
+  {
+    "_id": {"$oid": "65a1b2c3d4e5f6789012aa06"},
+    "refProduit": "TERROIR-DATTES-001",
+    "etatDePublication": "code_541",
+    "etatObjet": "code-1",
+    "typeProduit": "physique",
+    "classe": "code_514",
+    "tarifUHTPardefaut": 85,
+    "tvaParDefaut": 20,
+    "monnaie": {"code": "MAD", "symbole": "د.م."},
+    "region": ["Drâa-Tafilalet"],
+    "pays": ["MA"],
+    "imageProduit": "tr10.jpg",
+    "caracteristiquePhysique": [
+      {"type": "Poids", "valeur": "500g"},
+      {"type": "Variété", "valeur": "Medjoul premium"},
+      {"type": "Origine", "valeur": "Vallée du Drâa, Maroc"}
+    ],
+    "indicationDuStock": {
+      "etatStock": "En stock",
+      "quantiteDisponible": 80
+    },
+    "translations": [
+      {
+        "language": "fr",
+        "designationProduit": "Dattes Medjoul de la Vallée du Drâa",
+        "slogan": "Le roi des dattes, né sous le soleil du Sahara",
+        "descriptifProduit": "Dattes Medjoul premium cultivées dans la vallée du Drâa, reconnue comme l'une des meilleures régions phoenicicoles au monde. Chair fondante, sucrée et moelleuse. Récoltées et conditionnées manuellement par les agriculteurs locaux.",
+        "tags": ["dattes", "Medjoul", "Drâa", "Sahara", "palmier", "naturel", "premium"]
+      },
+      {
+        "language": "ar",
+        "designationProduit": "تمر مجهول من وادي درعة"
+      },
+      {
+        "language": "en",
+        "designationProduit": "Medjoul Dates from the Drâa Valley"
+      }
+    ]
+  }
+]

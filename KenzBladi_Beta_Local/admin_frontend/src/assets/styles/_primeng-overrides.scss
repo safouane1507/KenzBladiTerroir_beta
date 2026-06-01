@@ -1,0 +1,97 @@
+// ============================================================
+// _primeng-overrides.scss — Harmonise PrimeNG Lara with app tokens
+// Place AFTER the theme.css PrimeNG link in index.html
+// ============================================================
+:root {
+  --p-primary-color: var(--primary-color);
+  --p-primary-color-text: var(--primary-color-text);
+  --p-primary-hover-color: var(--primary-hover-color);
+  --p-primary-active-color: var(--primary-active-color);
+  --p-highlight-background: var(--highlight-bg);
+  --p-highlight-color: var(--highlight-text-color);
+}
+
+// ── Surfaces / Overlays ────────────────────────────────────────────────────
+.p-overlaypanel, .p-menu, .p-tieredmenu, .p-contextmenu,
+.p-dropdown-panel, .p-multiselect-panel, .p-autocomplete-panel,
+.p-calendar .p-datepicker, .p-dialog, .p-confirm-dialog, .p-sidebar {
+  background: var(--overlay-bg, var(--surface-card));
+  color: var(--text-color);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+}
+.p-overlaypanel, .p-dropdown-panel, .p-multiselect-panel, .p-menu {
+  box-shadow: var(--shadow-lg);
+}
+.p-dialog { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.p-dialog .p-dialog-header,
+.p-dialog .p-dialog-content,
+.p-dialog .p-dialog-footer {
+  background: var(--surface-ground);
+  color: var(--text-color);
+  border-color: var(--surface-border);
+}
+.p-component-overlay, .p-dialog-mask { background: rgba(0,0,0,.4); }
+
+// ── Buttons ────────────────────────────────────────────────────────────────
+.p-button, .p-button.p-component {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color-text) !important;
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-default);
+}
+.p-button:hover:not(:disabled) { background: var(--primary-hover-color) !important; border-color: var(--primary-hover-color) !important; }
+.p-button:active:not(:disabled) { background: var(--primary-active-color) !important; }
+.p-button:focus-visible { box-shadow: 0 0 0 .2rem var(--focus-ring-color) !important; }
+.p-button.p-button-text { background: transparent !important; border-color: transparent !important; color: var(--primary-color) !important; }
+.p-button.p-button-text:hover { background: var(--highlight-bg) !important; }
+.p-button.p-button-outlined { background: transparent !important; border-color: var(--primary-color) !important; color: var(--primary-color) !important; }
+.p-button.p-button-outlined:hover { background: var(--highlight-bg) !important; }
+.p-button.p-button-success { background: var(--color-success) !important; border-color: var(--color-success) !important; color: #fff !important; }
+.p-button.p-button-danger  { background: var(--color-danger)  !important; border-color: var(--color-danger)  !important; color: #fff !important; }
+.p-button.p-button-warning { background: var(--color-warning) !important; border-color: var(--color-warning) !important; color: #000 !important; }
+.p-button.p-button-secondary { background: var(--secondary-color) !important; border-color: var(--secondary-color) !important; color: #fff !important; }
+
+// ── Inputs ─────────────────────────────────────────────────────────────────
+.p-inputtext, .p-dropdown, .p-multiselect, .p-inputnumber, .p-calendar, .p-autocomplete, .p-textarea {
+  border-radius: var(--radius-sm);
+  border-color: var(--surface-border);
+  background: var(--surface-card);
+  color: var(--text-color);
+}
+.p-inputtext::placeholder { color: var(--text-secondary-color); opacity: 0.9; }
+.p-inputtext:focus,
+.p-dropdown.p-focus,
+.p-multiselect.p-focus { border-color: var(--primary-color); box-shadow: 0 0 0 .2rem var(--focus-ring-color); outline: none; }
+
+// ── Checkbox ───────────────────────────────────────────────────────────────
+.p-checkbox .p-checkbox-box { border-color: var(--surface-border); }
+.p-checkbox.p-highlight .p-checkbox-box { background: var(--primary-color); border-color: var(--primary-color); }
+
+// ── DataTable ──────────────────────────────────────────────────────────────
+.p-datatable { background: var(--surface-card); color: var(--text-color); }
+.p-datatable .p-datatable-header, .p-datatable .p-datatable-footer { background: var(--surface-card); border-color: var(--surface-border); }
+.p-datatable .p-datatable-thead > tr > th { background: var(--surface-100, #f1f5f9); color: var(--text-color); border-color: var(--surface-border); font-size: .82rem; text-transform: uppercase; letter-spacing: .5px; }
+.p-datatable .p-datatable-tbody > tr > td { border-color: var(--surface-border); font-size: .88rem; }
+.p-datatable .p-datatable-tbody > tr:hover { background: var(--surface-hover); }
+.p-paginator { background: var(--surface-card); border-top: 1px solid var(--surface-border); }
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight { background: var(--highlight-bg); color: var(--text-color); }
+
+// ── Accordion ──────────────────────────────────────────────────────────────
+.p-accordion .p-accordion-header-link { padding: var(--spacing-md) var(--spacing-lg); background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: var(--radius-md); transition: var(--transition-default); }
+.p-accordion .p-accordion-header-link:hover { background: var(--surface-hover); }
+.p-accordion .p-accordion-content { padding: var(--spacing-lg); background: none; border: 1px solid var(--surface-border); border-top: none; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+
+// ── Toast ──────────────────────────────────────────────────────────────────
+.p-toast .p-toast-message { border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+
+// ── Tag / Chip ─────────────────────────────────────────────────────────────
+.p-tag { border-radius: var(--radius-sm); }
+.p-chip { background: var(--surface-100, #f1f5f9); color: var(--text-color); border-radius: var(--radius-md); }
+
+// ── Misc ───────────────────────────────────────────────────────────────────
+.p-disabled, .p-component:disabled { opacity: var(--opacity-disabled); }
+.p-menuitem-link, .p-tabview-nav-link { text-decoration: none !important; }
+.p-overlay { z-index: 100000 !important; }

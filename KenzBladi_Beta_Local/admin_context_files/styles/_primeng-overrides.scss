@@ -1,0 +1,516 @@
+// ============================================================ 
+// _primeng-overrides.scss (EXHAUSTIVE) 
+// ============================================================ 
+// But : Harmoniser PrimeNG (Lara) avec tes tokens CSS dynamiques 
+// IMPORTANT : placer ce fichier APRÈS le theme.css PrimeNG 
+// (ou garder !important sur les points critiques : buttons) 
+// ============================================================ 
+:root {
+  // PrimeNG tokens (v18+ principalement) 
+  --p-primary-color: var(--primary-color);
+  --p-primary-color-text: var(--primary-color-text);
+  --p-primary-hover-color: var(--primary-hover-color);
+  --p-primary-active-color: var(--primary-active-color);
+  --p-highlight-background: var(--highlight-bg);
+  --p-highlight-color: var(--highlight-text-color);
+}
+
+/* ============================================================ 
+1) SURFACES / OVERLAYS (Panel, Dialog, Popups) 
+============================================================ */
+.p-overlaypanel,
+.p-menu,
+.p-tieredmenu,
+.p-slidemenu,
+.p-contextmenu,
+.p-dropdown-panel,
+.p-multiselect-panel,
+.p-autocomplete-panel,
+.p-calendar .p-datepicker,
+.p-tooltip .p-tooltip-text,
+.p-toast .p-toast-message,
+.p-dialog,
+.p-confirm-dialog,
+.p-sidebar {
+  background: var(--overlay-bg);
+  color: var(--overlay-fg);
+  border: 1px solid var(--overlay-border);
+  border-radius: var(--overlay-radius);
+}
+
+.p-overlaypanel,
+.p-dropdown-panel,
+.p-multiselect-panel,
+.p-autocomplete-panel,
+.p-calendar .p-datepicker,
+.p-menu,
+.p-tieredmenu,
+.p-contextmenu,
+.p-slidemenu {
+  box-shadow: var(--overlay-shadow);
+}
+
+.p-overlay {
+  z-index: 100000 !important;
+}
+
+.p-dialog {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  
+}
+
+.p-dialog .p-dialog-header,
+.p-dialog .p-dialog-content,
+.p-dialog .p-dialog-footer {
+background: var(--surface-ground);
+  color: var(--text-color);
+  border-color: var(--surface-border);
+}
+
+/* Backdrop / mask */
+.p-component-overlay,
+.p-dialog-mask,
+.p-sidebar-mask {
+  background: var(--overlay-mask);
+}
+
+/* ============================================================ 
+2) BUTTONS (CRITIQUE pour Lara -> hardcoded hex) 
+============================================================ */
+.p-button,
+.p-button.p-component {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color-text) !important;
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-default);
+}
+
+.p-button:hover:not(:disabled) {
+  background: var(--primary-hover-color) !important;
+  border-color: var(--primary-hover-color) !important;
+}
+
+.p-button:active:not(:disabled) {
+  background: var(--primary-active-color) !important;
+  border-color: var(--primary-active-color) !important;
+}
+
+.p-button:focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--focus-ring-color) !important;
+}
+
+/* Text / Link button */
+.p-button.p-button-text {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--primary-color) !important;
+}
+
+.p-button.p-button-text:hover {
+  background: var(--highlight-bg) !important;
+}
+
+/* Outlined button */
+.p-button.p-button-outlined {
+  background: transparent !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.p-button.p-button-outlined:hover {
+  background: var(--highlight-bg) !important;
+}
+
+/* Secondary / Danger / Success variants si utilisés */
+.p-button.p-button-success {
+  background: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: #fff !important;
+}
+
+.p-button.p-button-danger {
+  background: var(--color-danger) !important;
+  border-color: var(--color-danger) !important;
+  color: #fff !important;
+}
+
+.p-button.p-button-warning {
+  background: var(--color-warning) !important;
+  border-color: var(--color-warning) !important;
+  color: #000 !important;
+}
+
+/* SelectButton (configurator) */
+.p-selectbutton .p-button {
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================================ 
+  3) INPUTS / FORMS 
+============================================================ */
+.p-inputtext,
+.p-dropdown,
+.p-multiselect,
+.p-inputnumber,
+.p-calendar,
+.p-autocomplete,
+.p-treeselect {
+  border-radius: var(--radius-sm);
+  border-color: var(--surface-border);
+  background: var(--surface-card);
+  color: var(--text-color);
+}
+
+.p-inputtext::placeholder {
+  color: var(--text-secondary-color);
+  opacity: 0.9;
+}
+
+.p-inputtext:hover,
+.p-dropdown:hover,
+.p-multiselect:hover,
+.p-treeselect:hover {
+  border-color: var(--primary-400);
+}
+
+.p-inputtext:focus,
+.p-dropdown.p-focus,
+.p-multiselect.p-focus,
+.p-treeselect.p-focus,
+.p-calendar.p-focus .p-inputtext,
+.p-inputnumber-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--focus-ring-color);
+  outline: none;
+}
+
+/* Checkbox / Radio */
+.p-checkbox .p-checkbox-box,
+.p-radiobutton .p-radiobutton-box {
+  border-color: var(--surface-border);
+}
+
+.p-checkbox.p-highlight .p-checkbox-box,
+.p-radiobutton.p-highlight .p-radiobutton-box {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* ============================================================ 
+  4) MENUS / MENUBAR / ITEMS / HOVER 
+============================================================ */
+.p-menubar {
+  background: var(--menu-bar-bg);
+  color: var(--menu-bar-fg);
+  border: 1px solid var(--menu-bar-border);
+  box-shadow: var(--menu-bar-shadow);
+  border-radius: var(--radius-md);
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link,
+.p-menuitem-link {
+  color: var(--menu-link-fg);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-default);
+}
+
+.p-menuitem-link:hover {
+  background: var(--menu-link-hover-bg);
+  color: var(--menu-link-hover-fg);
+}
+
+.p-menuitem.p-highlight>.p-menuitem-link,
+.p-menuitem-link.p-highlight {
+  background: var(--menu-link-active-bg);
+  color: var(--menu-link-active-fg);
+}
+
+/* ============================================================ 
+  5) TABVIEW / TABS / PANELS 
+============================================================ */
+.p-tabview {
+  background: transparent;
+}
+
+.p-tabview-nav {
+  background: var(--surface-card);
+  border: none;
+  border-bottom: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-sm);
+  padding: 0 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.p-tabview-title {
+  font-size: var(--font-size-base);
+}
+
+.p-tabview-nav-link {
+  background: transparent !important;
+  border: none !important;
+  padding: 1rem 0;
+  color: var(--text-secondary-color);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  text-decoration: none !important;
+}
+
+.p-tabview-nav-link:hover {
+  color: var(--text-color);
+}
+
+.p-tabview-selected .p-tabview-nav-link,
+.p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  color: var(--secondary-color); /////
+}
+
+.p-tabview-nav li.p-highlight .p-tabview-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--secondary-color); ///////
+  border-radius: 2px;
+}
+
+.p-tabview-panels {
+  background: var(--surface-card);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md);
+}
+
+/* ============================================================ 
+  6) ACCORDION 
+============================================================ */
+.p-accordion .p-accordion-header-link {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-default);
+}
+
+.p-accordion .p-accordion-header-link:hover {
+  background: var(--surface-hover);
+}
+
+.p-accordion .p-accordion-toggle-icon {
+  color: var(--secondary-color);
+}
+
+.p-accordion .p-accordion-content {
+  padding: var(--spacing-lg);
+  background: none;
+  // background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* ============================================================ 
+  7) DATATABLE / PAGINATOR 
+============================================================ */
+.p-datatable {
+  background: var(--surface-card);
+  color: var(--text-color);
+}
+
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-footer {
+  background: var(--surface-card);
+  border-color: var(--surface-border);
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+  background: var(--surface-50);
+  color: var(--text-color);
+  border-color: var(--surface-border);
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+  border-color: var(--surface-border);
+}
+
+.p-datatable .p-datatable-tbody>tr:hover {
+  background: var(--surface-hover);
+}
+
+.p-paginator {
+  background: var(--surface-card);
+  border-top: 1px solid var(--surface-border);
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: var(--highlight-bg);
+  color: var(--text-color);
+}
+
+/* ============================================================ 
+  8) TOAST / MESSAGES 
+============================================================ */
+.p-toast .p-toast-message {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.p-toast .p-toast-message-content {
+  color: var(--text-color);
+}
+
+/* ============================================================ 
+  9) CAROUSEL (mega menu + général) 
+============================================================ */
+.p-carousel .p-carousel-content {
+  position: relative;
+}
+
+.p-carousel .p-carousel-prev,
+.p-carousel .p-carousel-next {
+  width: var(--btn-action-size-sm);
+  height: var(--btn-action-size-sm);
+  border-radius: var(--border-radius-full);
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+  border: none;
+  transition: var(--transition-default);
+  box-shadow: var(--shadow-sm);
+  margin: 0 var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-carousel .p-carousel-prev:hover:not(:disabled),
+.p-carousel .p-carousel-next:hover:not(:disabled) {
+  background: var(--primary-400);
+  transform: var(--hover-scale-sm);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.p-carousel .p-carousel-prev:disabled,
+.p-carousel .p-carousel-next:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+  background: var(--surface-border);
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator button {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--border-radius-full);
+  background: var(--surface-border);
+  border: none;
+  transition: var(--transition-default);
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator button:hover {
+  background: var(--primary-400);
+  transform: var(--hover-scale-sm);
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+  background: var(--primary-color);
+  width: 24px;
+  border-radius: var(--border-radius-pill);
+}
+
+/* ============================================================ 
+  10) STEPPER 
+============================================================ */
+.p-stepper .p-stepper-header.p-highlight .p-stepper-number {
+  background: var(--secondary-color);
+  color: var(--secondary-color-text);
+  border: 1px solid var(--surface-border);
+}
+
+.p-stepper .p-stepper-header.p-highlight .p-stepper-title {
+
+  color: var(--text-color);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+
+}
+
+.p-stepper .p-stepper-header:has(~ .p-highlight) .p-stepper-separator {
+  background: var(--highlight-bg);
+}
+
+.p-stepper .p-stepper-panels {
+  background: none !important;
+}
+
+/* ============================================================ 
+  11) TIMELINE 
+============================================================ */
+.p-timeline .p-timeline-event .p-timeline-event-marker {
+  border: 2px solid var(--primary-400);
+  background: var(--surface-card);
+}
+
+/* ============================================================ 
+  12) PROGRESS / SLIDER 
+============================================================ */
+.p-progressbar {
+  background: var(--surface-200);
+  border-radius: var(--radius-md);
+}
+
+.p-progressbar .p-progressbar-value {
+  background: var(--primary-color);
+}
+
+.p-slider .p-slider-range {
+  background: var(--primary-color);
+}
+
+.p-slider .p-slider-handle {
+  border-color: var(--primary-color);
+}
+
+/* ============================================================ 
+  13) BADGE / TAG / CHIP 
+============================================================ */
+.p-badge {
+  font-weight: var(--font-weight-bold);
+}
+
+.p-tag {
+  border-radius: var(--radius-sm);
+}
+
+.p-chip {
+  background: var(--surface-100);
+  color: var(--text-color);
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================ 
+  14) TOOLTIP 
+============================================================ */
+.p-tooltip .p-tooltip-text {
+  background: var(--surface-900);
+  color: var(--surface-0);
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================ 
+  15) SMALL FIXES / RTL SAFE 
+============================================================ */
+.p-disabled,
+.p-component:disabled {
+  opacity: var(--opacity-disabled);
+}
+
+/* Evite les underline ou styles imposés */
+.p-menuitem-link,
+.p-tabview-nav-link {
+  text-decoration: none !important;
+}

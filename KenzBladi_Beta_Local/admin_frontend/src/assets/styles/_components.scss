@@ -1,0 +1,79 @@
+// _components.scss (Admin copy — same as frontend, no flag-icons)
+
+.app-card {
+  background-color: var(--surface-card);
+  transition: var(--transition-transform);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow-default);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  &:hover { transform: var(--hover-lift); }
+  .app-title { color: var(--text-color); font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); }
+  .app-text  { color: var(--text-secondary-color); font-size: var(--font-size-sm); }
+  .card-body { background-color: var(--surface-card); }
+}
+
+.btn-app {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  height: var(--btn-height); padding: 0 1rem;
+  border-radius: var(--btn-radius); border: 1px solid transparent;
+  background: transparent; font-weight: var(--btn-font-weight); font-family: inherit;
+  line-height: 1; text-decoration: none; cursor: pointer; user-select: none; white-space: nowrap;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .15s ease;
+  &:active { transform: translateY(1px); }
+  &:disabled, &.disabled { opacity: .55; cursor: not-allowed; transform: none; }
+}
+.btn-app--primary {
+  background: var(--btn-primary-bg); color: var(--btn-primary-fg); border-color: var(--btn-primary-border);
+  &:hover:not(:disabled) { background: var(--btn-primary-hover-bg); }
+}
+.btn-app--surface {
+  background: var(--btn-surface-bg); color: var(--btn-surface-fg); border-color: var(--btn-surface-border);
+  &:hover:not(:disabled) { background: var(--btn-surface-hover-bg); }
+}
+.btn-app--outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  background-color: transparent; color: var(--primary-color);
+  border: 1.5px solid var(--primary-color); padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius); font-size: var(--font-size-sm); font-weight: var(--font-weight-bold);
+  cursor: pointer; transition: background .2s ease, color .2s ease;
+  &:hover { background-color: var(--primary-color); color: #fff; }
+}
+.btn-app--sm { height: 2.125rem; padding: 0 .75rem; border-radius: var(--radius-sm); }
+.btn-app--lg { height: 3rem; padding: 0 1.25rem; border-radius: var(--radius-lg); }
+
+.app-btn {
+  position: relative; padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--primary-color); color: var(--primary-color-text);
+  border: none; border-radius: var(--border-radius);
+  font-size: var(--font-size-sm); font-weight: var(--font-weight-bold);
+  cursor: pointer; box-shadow: var(--btn-shadow-default);
+  text-transform: uppercase; letter-spacing: .5px; overflow: hidden;
+  &:hover { transform: translateY(-2px); box-shadow: var(--btn-shadow-hover); }
+}
+
+.app-badge {
+  position: absolute; z-index: 4; font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold);
+  padding: 5px 10px; border-radius: var(--border-radius-sm); color: var(--text-color);
+  border: var(--border-width-thin) solid rgba(255,255,255,.6);
+  background: var(--overlay-white); border-color: var(--surface-border);
+}
+
+.app-container {
+  padding-inline: 15px; background-color: var(--surface-ground);
+  @media (min-width: 992px)  { padding-inline: 30px; }
+  @media (min-width: 1400px) { padding-inline: 90px; }
+}
+
+.app-color-primary   { color: var(--primary-color); }
+.app-color-secondary { color: var(--secondary-color); }
+.app-text-color      { color: var(--text-color); }
+
+.truncate { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; }
+.truncate-1 { -webkit-line-clamp: 1; }
+.truncate-2 { -webkit-line-clamp: 2; }
+
+body, h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
